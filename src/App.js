@@ -10,11 +10,14 @@ import {
   FormControl,
   FormLabel,
 } from "@material-ui/core";
+import { useMyStyle } from "./styles/mystyle";
 
 function App() {
   const [bgColor, setBgColor] = useState("brown");
   const [value, setValue] = useState("primary");
+  const myClasses = useMyStyle({ bgColor: bgColor, primaryOrSecondary: value });
 
+  console.log("myClasses: ", myClasses);
   const handleChange = (e) => {
     setValue(e.target.value);
   };
@@ -22,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Paper>
+        <Paper classes={myClasses}>
           <div>yo</div>
           <TextField
             label="Outlined"
